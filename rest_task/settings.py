@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'rest_task.wsgi.application'
 #     }
 # }
 
-CACHE_TTL = 60 * 5  # 5 minutes
+CACHE_TTL = 60 * 2  # 5 minutes
 
 CACHES = {
     "default": {
