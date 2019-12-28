@@ -76,14 +76,14 @@ WSGI_APPLICATION = 'rest_task.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-CACHE_TTL = 60 * 2  # 5 minutes
+CACHE_TTL = 60 * 5  # 5 minutes
 
 CACHES = {
     "default": {
