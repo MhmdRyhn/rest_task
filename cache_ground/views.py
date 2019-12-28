@@ -14,38 +14,35 @@ class CacheView(View):
 
         response = {
             'status_code': status_code,
-            'body': response_body,
-            'error': error
+            'body': response_body
         }
+        if error:
+            response['error'] = error
         return JsonResponse(response)
 
     @csrf_exempt
     def post(self, request, *args, **kwargs):
         request_body = request.body
         request_body = json.loads(request_body.decode('utf-8'))
-        # if request_body:
         status_code, body, error = insert_data(request_body)
-        # else:
-        #     status_code, body, error = 204, {}, {}
 
         response = {
             'status_code': status_code,
-            'body': body,
-            'error': error
+            'body': body
         }
+        if error:
+            response['error'] = error
         return JsonResponse(response)
 
     @csrf_exempt
     def patch(self, request, *args, **kwargs):
         request_body = request.body
         request_body = json.loads(request_body.decode('utf-8'))
-        # if request_body:
         status_code, body, error = update_data(request_body)
-        # else:
-        #     status_code, body = 204, {}
         response = {
             'status_code': status_code,
-            'body': body,
-            'error': error
+            'body': body
         }
+        if error:
+            response['error'] = error
         return JsonResponse(response)

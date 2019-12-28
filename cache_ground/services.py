@@ -3,6 +3,21 @@ from django.core.cache import cache
 from redis.exceptions import ConnectionError
 
 
+def get_invalid_key_error(keys):
+    """
+    This function checks if all the requested
+    keys are present in the storage or not.
+
+    :param keys: Values to be retrieved for
+    :return: error if keys not found or {}
+    """
+    error = {}
+    for key in keys:
+        if not cache.get(key):
+            error[key] = 'Key Not Found'
+    return error
+
+
 def get_values_by_keys(keys):
     body, status_code = {}, 200
     error = {}
